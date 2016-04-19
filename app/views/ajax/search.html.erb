@@ -1,0 +1,11 @@
+<h1>Ajax#search</h1>
+
+<%= select_tag(:id,options_from_collection_for_select(@books,:id,:publish),:id=>'publisher',
+   data:{
+        remote:true,
+        url:url_for(action: :result)
+        }
+)%>
+
+<ul id="result"></ul>
+
