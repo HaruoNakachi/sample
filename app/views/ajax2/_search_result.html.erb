@@ -1,0 +1,9 @@
+
+<% @cities.each do |city|%>
+    <li><%= link_to city.name, 'http://google.com' %></li>
+<% end %>
+
+<%= select_tag(:city_id,options_from_collection_for_select(@cities,:id,:name),:id=>'city_id'
+)%>
+
+

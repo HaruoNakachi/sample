@@ -1,0 +1,10 @@
+<h1>Ajax2#search</h1>
+
+<%= select_tag(:pref_id,options_from_collection_for_select(@prefs,:id,:name),:id=>'pref_id',
+   data:{
+        remote:true,
+        url:url_for(action: :result)
+        }
+)%>
+
+<ul id="result"></ul>

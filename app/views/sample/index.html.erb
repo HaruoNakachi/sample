@@ -1,0 +1,12 @@
+<h1>Sample#index</h1>
+
+<%= select_tag(:id,options_from_collection_for_select(@prefs,:id,:name),:id=>'sel_pref',
+    data:{
+         remote: true,
+         url: url_for(action: :result)
+         }
+) %>
+
+<ul id="result"></ul> 
+
+
