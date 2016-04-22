@@ -8,3 +8,31 @@
 )%>
 
 <ul id="result"></ul>
+
+<script>
+$(function($) {
+	$('#pref_id').change(function () {
+		alert ('start');
+			$.ajax({
+				type: 'post',
+				url: 'result',
+				data: {
+					pref_id: $('#pref_id').val()
+				},
+				success: function(j_data){
+					alert ('success');
+					<% binding.pry %>
+					alert("<%= escape_javascript(render 'search_result') %>");
+					$('#result').html("<%= escape_javascript(render 'search_result') %>");
+				},
+				error: function(j_data){
+					alert ('error');
+				}
+			})
+
+		alert ('end');
+	});
+});
+
+
+</script>
