@@ -1,10 +1,6 @@
 <h1>Ajax2#search</h1>
 
-<%= select_tag(:pref_id,options_from_collection_for_select(@prefs,:id,:name),:id=>'pref_id',
-   data:{
-        remote:true,
-        url:url_for(action: :result)
-        }
+<%= select_tag(:pref_id,options_from_collection_for_select(@prefs,:id,:name),:id=>'pref_id'
 )%>
 
 <ul id="result"></ul>
@@ -12,25 +8,23 @@
 <script>
 $(function($) {
 	$('#pref_id').change(function () {
-		alert ('start');
-			$.ajax({
-				type: 'post',
-				url: 'result',
-				data: {
-					pref_id: $('#pref_id').val()
-				},
-				success: function(j_data){
-					alert ('success');
-					<% binding.pry %>
-					alert("<%= escape_javascript(render 'search_result') %>");
-					$('#result').html("<%= escape_javascript(render 'search_result') %>");
-				},
-				error: function(j_data){
-					alert ('error');
-				}
-			})
-
-		alert ('end');
+		alert ('This is test.');
+		// $('#pref_id').data('remote', 'true');
+		// $('#pref_id').data('url', '/ajax2/result');
+		$('#pref_id').attr('data-remote', 'true');
+		$('#pref_id').attr('data-url', '/ajax2/result');
+		$.ajax({
+			type: 'post',
+			url: 'result',
+			data: {
+				pref_id: $('#pref_id').val()
+			},
+			success: function(j_data){
+			},
+			error: function(j_data){
+				alert ('error');
+			}
+		})
 	});
 });
 
